@@ -1,0 +1,18 @@
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>充值用户</th>
+            <th>充值金额</th>
+            <th>充值时间</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let record of rechargeRecords">
+            <td>{{record._id}}</td>
+            <td>{{record.user.nickname}}</td>
+            <th>{{record.total_fee}}</th>
+            <th>{{record.createDt | date:'yyyy-MM-dd hh:mm:ss'}}</th>
+        </tr>
+    </tbody>
+</table>

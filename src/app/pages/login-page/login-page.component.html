@@ -1,0 +1,90 @@
+<div class="bg">
+    <div class="login-box">
+        <!-- /.login-logo -->
+        <div class="login-box-body">
+            <!--登陆页面  -->
+            <div class="login" *ngIf="state=='login'">
+                <div class="row">
+                    <p class="login-box-msg col-md-12"> 狠享赚后台管理系统</p>
+                    <div class="example-form">
+                        <div class="example-full-width" cellspacing="0">
+                            <p>
+                                <i class="fa fa-address-book-o" aria-hidden="true"></i>&nbsp;&nbsp;帐号:
+                                <md-input-container class="example-full-width">
+                                    <input mdInput placeholder="请输入帐号" [(ngModel)]="user.phone">
+                                </md-input-container>
+                            </p>
+                        </div>
+                        <div class="example-full-width" cellspacing="0">
+                            <p>
+                                <i class="fa fa-lock" aria-hidden="true"></i>&nbsp;&nbsp;密码:
+                                <md-input-container class="example-full-width">
+                                    <input mdInput placeholder="请输入密码" [(ngModel)]="user.password" type="password">
+                                </md-input-container>
+                            </p>
+                        </div>
+                        <div class="checkbox icheck">
+                            <section class="example-section">
+                                <md-checkbox class="example-margin" color="primary" [(ngModel)]="checked">记住我</md-checkbox>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+                <div class="row btn-button">
+                    <div>
+                        <button (click)="login()" md-raised-button color="primary" class="btn btn-info btn-block" [class.active]="state=='login'">登录</button>
+                        <!-- <button (click)="state='register'" md-raised-button color="primary" class="btn btn-info btn-block" [class.active]="state=='register'">没有帐号?立即注册</button> -->
+                    </div>
+                </div>
+            </div>
+            <!--注册页面  -->
+            <!-- <div class="register" *ngIf="state=='register'">
+                <div class="sig-up row">
+                    <span class="form-title col-md-2">注册</span>
+                    <a (click)="state='login'">已有账号，马上登录</a>
+                </div>
+                <div class="regbox">
+                    <div class="form form-horizontal">
+                        <div class="sig-item">
+                            <label class="label-con">电话<span class="required">*</span></label>
+                            <md-input-container class="example-full-width">
+                                <input mdInput placeholder="请输入手机号码" [(ngModel)]="user.phone">
+                            </md-input-container>
+                        </div>
+                        <!-- <div class="sig-item">
+                            <label class="label-con">短信验证码<span class="required">*</span></label>
+                            <md-input-container class="example-full-width authCode">
+                                <input mdInput placeholder="请输入验证码" [(ngModel)]="authCode">
+                            </md-input-container>
+                            <button (click)="sendAuthCode()" md-raised-button color="primary" [class.active]="state=='login'">{{codeTime==0?'发送验证码':codeTime}}</button>
+                        </div> -->
+                        <!-- <div class="sig-item">
+                            <label class="label-con">设置密码<span class="required">*</span></label>
+                            <md-input-container class="example-full-width pass">
+                                <input mdInput placeholder="设置密码,建议字母数字组合" [(ngModel)]="user.password" type="password" autocomplete="off">
+                            </md-input-container>
+                        </div>
+                        <div class="sig-item">
+                            <label class="label-con">确认密码<span class="required">*</span></label>
+                            <md-input-container class="example-full-width pass">
+                                <input mdInput placeholder="确认密码" [(ngModel)]="user.rePassword" type="password" autocomplete="off">
+                            </md-input-container>
+                        </div>
+                        <div class="sig-item checked">
+                            <section class="example-section">
+                                <md-checkbox class="example-margin" color="primary" [(ngModel)]="checked"></md-checkbox>
+                                <span class="checkbox-text">我已阅读并同意<a href="">《用户注册协议》</a></span>
+                            </section>
+                        </div>
+                        <div class="sig-item2">
+                            <button type="button" md-raised-button color="primary" class="reg" (click)="register()">立即注册</button>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+
+        </div>
+    </div> -->
+    <!-- /.login-box-body -->
+</div>

@@ -1,0 +1,118 @@
+<md-toolbar>
+    <button md-raised-button (click)="status='list'">列表</button>
+    <button md-raised-button (click)="status='create'">添加栏目</button>
+
+</md-toolbar>
+
+<table class="table table-hover" *ngIf="status=='list'">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>名称</th>
+            <th>排序</th>
+            <th>子任务数量</th>
+            <th>创建时间</th>
+            <th>管理</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let taskTag of taskTags;let i = index;">
+            <td>{{taskTag._id}}</td>
+            <td>{{taskTag.name}}</td>
+            <td>{{taskTag.sort}}</td>
+            <td>{{taskNums[i]}}</td>
+            <td>{{taskTag.createDt | date:'yyyy-MM-dd'}}</td>
+
+            <td>
+                <button md-raised-button (click)="showTask(taskTag)" color="primary">查看子任务</button>
+
+                <button md-raised-button (click)="editTaskTag=taskTag;status='edit'" color="primary">编辑</button>
+
+                <button md-raised-button (click)=" deleteTaskTag(taskTag,taskNums[i])" color="warn">删除</button>
+
+            </td>
+
+        </tr>
+    </tbody>
+</table>
+
+
+<div class="container">
+    <div class="row">
+
+        <div role="form" *ngIf="status=='create'">
+            <legend>添加栏目</legend>
+
+            <div class="form-group">
+                <label for="">栏目名称</label>
+                <input type="text" class="form-control" [(ngModel)]="newTaskTag.name" placeholder="栏目名称">
+
+            </div>
+            <div class="form-group">
+                <label for="">栏目排序</label>
+                <input type="nuber" class="form-control" placeholder="栏目排序" [(ngModel)]="newTaskTag.sort">
+            </div>
+            <button (click)="addTaskTag()" class="btn btn-primary">确认</button>
+        </div>
+    </div>
+</div>
+
+
+
+<div *ngIf="status=='edit'">
+    <legend>编辑栏目</legend>
+
+    <div class="form-group">
+        <label for="">名称</label>
+        <input type="text" class="form-control" [(ngModel)]="editTaskTag.name" placeholder="名称">
+    </div>
+    <div class="form-group">
+        <label for="">排序</label>
+        <input type="number" class="form-control" [(ngModel)]="editTaskTag.sort" placeholder="排序">
+    </div>
+
+
+
+
+    <button (click)="updateEditTaskTag()" class="btn btn-primary">更新</button>
+</div>
+
+
+<table class="table table-hover" *ngIf="tasks && selectedTaskTag ">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>名称</th>
+            <th>发布时间</th>
+            <th>推广时间</th>
+            <th>资费</th>
+            <th>余额</th>
+            <th>分享点击金额</th>
+            <th>点击人数</th>
+            <th>推广链接</th>
+            <th>任务图片</th>
+            <th>广告图片</th>
+            <th>操作</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let task of tasks">
+            <td>{{task._id}}</td>
+            <td>{{task.title}}</td>
+            <td>{{task.createDt |date:'yyyy-MM-dd'}}</td>
+            <td></td>
+
+            <td>{{task.fee}}</td>
+            <td>{{task.totalMoney}}</td>
+            <td>{{task.shareMoney}}</td>
+            <td>{{task.users.length}}</td>
+            <td>{{task.websiteUrl}}</td>
+            <td><img [src]="task.imageUrl"></td>
+            <td>{{task.bannerImage}}</td>
+            <td>
+                <button md-raised-button (click)="beBanner(task)">作为广告</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

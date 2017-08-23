@@ -1,0 +1,116 @@
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>微信昵称</th>
+            <th>性别</th>
+            <th>注册时间</th>
+            <th>余额</th>
+            <th>是否完善信息</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of users">
+            <td>{{user._id}}</td>
+            <td>{{user.nickname}}</td>
+            <td>{{user.sex}}</td>
+            <td>{{user.createDt | date:'yyyy-MM-dd hh:mm:ss'}}</td>
+            <td>{{user.totalMoney}}</td>
+            <td>
+                <md-checkbox [value]="user.isFinish" color="primary|accent|warn" [disabled]="true"></md-checkbox>
+            </td>
+            <td>
+                <button md-raised-button (click)="relationTree(user)" color="primary">关系树</button>
+                <button md-raised-button (click)="moneyLog(user)" color="primary">收益日志</button>
+
+                <!-- <button md-raised-button (click)="editUser(user)" color="primary">编辑</button> -->
+                <button md-raised-button (click)="deleteUser(user)" color="warn">删除</button>
+            </td>
+        </tr>
+
+    </tbody>
+</table>
+
+<div *ngIf="tree">
+    <h1>师徒关系树</h1>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>一级师傅</th>
+                <th>二级师傅</th>
+                <th>三级师傅</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{tree.level1Parent?.nickname}}</td>
+                <td>{{tree?.level2Parent?.nickname}}</td>
+                <td>{{tree?.level3Parent?.nickname}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-hover" *ngIf="tree">
+
+        <tbody>
+            <tr>
+                <td colspan="3" class="text-center">一级徒弟</td>
+            </tr>
+            <tr>
+                <td *ngFor="let user of tree.level1Children">{{user.nickname}}</td>
+
+            </tr>
+            <tr>
+                <td colspan="3" class="text-center">二级徒弟</td>
+            </tr>
+            <tr>
+                <td *ngFor="let user of tree.level2Children">{{user.nickname}}</td>
+            </tr>
+            <tr>
+                <td colspan="3" class="text-center">三级徒弟</td>
+            </tr>
+            <tr>
+                <td *ngFor="let user of tree.level3Children">{{user.nickname}}</td>
+            </tr>
+
+
+        </tbody>
+    </table>
+
+</div>
+
+
+
+<table class="table table-hover" *ngIf="taskRecords">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>任务</th>
+            <th>时间</th>
+            <th>发起人</th>
+            <th>一级</th>
+            <th>二级</th>
+            <th>三级</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="text-center"></td>
+        </tr>
+
+        <tr *ngFor="let taskRecord of taskRecords">
+            <th>{{taskRecord._id}}</th>
+            <th>{{taskRecord.task['title']}}</th>
+            <th>{{taskRecord.createDt}}</th>
+            <th *ngFor="let order of taskRecord.shareDetail">{{order.user.nickname}}-->{{order.user.money}}</th>
+
+
+        </tr>
+
+
+
+
+
+
+    </tbody>
+</table>

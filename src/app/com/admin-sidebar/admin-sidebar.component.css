@@ -1,0 +1,18 @@
+.container {
+    width: 100vw;
+    height: 100vh;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.sidenav-content {
+    margin-top: 62px;
+    /*display: flex;*/
+    /*height: 100%;*/
+    /*align-items: center;*/
+    /*justify-content: center;*/
+    background: #ECF0F5!important;
+}
+
+.sidenav {
+    padding: 20px;
+}
